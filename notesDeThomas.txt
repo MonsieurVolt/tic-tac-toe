@@ -1,0 +1,17 @@
+remplacer X => $, O => €;
+$ = {
+  green light
+}
+€ = {
+  pink light
+}
+game = {
+  bgc = black
+  hover : scale(....)
+  border : none
+  ff ; <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@700&display=swap" rel="stylesheet">
+}
+component = {
+  color:   #1E90FF
+  
+}

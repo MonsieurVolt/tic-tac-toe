@@ -1,0 +1,25 @@
+.announce {
+  text-align: center;
+  font-size: 1.7rem;
+  width: 15rem;
+  height: 15rem;
+}
+.announce button {
+  background-color: #fff;
+  border: none;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 1px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.5s ease;
+}
+.announce button:hover {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.announce_symbol {
+  font-size: 3rem;
+}
