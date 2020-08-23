@@ -47,7 +47,6 @@ class App extends Component {
     });
   }
   updateNbPlayer(number) {
-    console.log(number);
     if (number !== 1 && number !== 2) throw new Error();
     this.setState({
       nbPlayer: number,
@@ -55,7 +54,6 @@ class App extends Component {
   }
   render() {
     const { nbPlayer, player1, player2, informationsSecondPlayer } = this.state;
-    console.log(nbPlayer);
     return (
       <Fragment>
         {informationsSecondPlayer ? (

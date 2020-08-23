@@ -1,7 +1,9 @@
 import React from "react";
 import "./AnnouncePlayer.css";
-function AnnouncePlayer({ content, symbol, onClick }) {
+function AnnouncePlayer({ content, symbol, onClick, turn }) {
   const style = {};
+  const playerStart = symbol === "$" ? "Player2" : "Player1";
+
   if (symbol === "€") style.color = " rgb(245, 0, 233)";
   else if (symbol === "$") style.color = "blue";
   return (
@@ -12,6 +14,7 @@ function AnnouncePlayer({ content, symbol, onClick }) {
           {symbol}
         </span>
       </p>
+      <p>{playerStart} start</p>
       <button onClick={() => onClick()}>OK</button>
     </div>
   );
