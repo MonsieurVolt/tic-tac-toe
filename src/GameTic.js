@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CaseTic from "./CaseTic";
 import "./GameTic.css";
+import InfoToUser from "./InfoToUser";
 class GameTic extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,9 @@ class GameTic extends Component {
       player2: this.props.player2,
       gameTable: ["", "", "", "", "", "", "", "", ""],
       stopTheGame: { state: false, reson: "" },
+      caseMatched: [],
     };
+    this.defineBackground = this.defineBackground.bind(this);
     this.determineTurn = this.determineTurn.bind(this);
     this.setUserSymbol = this.setUserSymbol.bind(this);
     this.computerTurn = this.computerTurn.bind(this);
@@ -56,8 +59,13 @@ class GameTic extends Component {
     posibilities.forEach((pos) => {
       if (contain(array, pos)) {
         bool = true;
+
+        this.setState({
+          caseMatched: pos,
+        });
       }
     });
+
     return bool;
   }
 
@@ -73,31 +81,28 @@ class GameTic extends Component {
     const arrayOfDol = [];
     const arrayOfEur = [];
 
+    // eslint-disable-next-line array-callback-return
     copy.map((elem, index) => {
       if (elem !== "") {
         clean += 1;
         if (elem === "$") {
-          console.log(index);
           arrayOfDol.push(index);
         } else if (elem === "€") {
           arrayOfEur.push(index);
         }
       }
     });
-    if (clean === 9) {
+    if (clean === 10) {
       result.state = true;
-      return result;
+      result.reson = "equality";
     }
 
     if (this.findAllPosibilities(arrayOfDol)) {
       result.state = true;
       result.reson = "$";
-      return result;
-    }
-    if (this.findAllPosibilities(arrayOfEur)) {
+    } else if (this.findAllPosibilities(arrayOfEur)) {
       result.state = true;
       result.reson = "€";
-      return result;
     }
 
     return result;
@@ -129,17 +134,25 @@ class GameTic extends Component {
     this.setState({
       turnOf: turn,
     });
+
     const giveResult = this.endOfTheGame();
-    console.log(giveResult);
+
     if (giveResult.state) {
-      console.log("bof");
       this.setState({
         stopTheGame: giveResult,
       });
     }
   }
+  defineBackground(index) {
+    const { caseMatched } = this.state;
+    if (caseMatched.includes(index)) {
+      return "rgb(5, 255, 15)";
+    } else {
+      return "black";
+    }
+  }
   render() {
-    const { gameTable, turnOf } = this.state;
+    const { gameTable, turnOf, stopTheGame, nbPlayer, player1 } = this.state;
     const symbol = this.state[turnOf]?.symbol || "";
     const game = gameTable.map((e, index) => (
       <CaseTic
@@ -148,10 +161,22 @@ class GameTic extends Component {
         onClick={this.setUserSymbol}
         index={index}
         playerSymbol={symbol}
+        background={this.defineBackground(index)}
       />
     ));
 
-    return <div className="game">{game}</div>;
+    return (
+      <div>
+        <InfoToUser
+          turnOf={turnOf}
+          stopTheGame={stopTheGame}
+          computer={nbPlayer === 1}
+          player1={player1}
+          restart={this.props.restart}
+        />
+        <div className="game">{game}</div>
+      </div>
+    );
   }
 }
 

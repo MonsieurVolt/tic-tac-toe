@@ -2,7 +2,7 @@ import React from "react";
 import "./AnnouncePlayer.css";
 function AnnouncePlayer({ content, symbol, onClick, turn }) {
   const style = {};
-  const playerStart = symbol === "$" ? "Player2" : "Player1";
+  const playerStart = symbol === "$" ? "Player 2" : "Player 1";
 
   if (symbol === "€") style.color = " rgb(245, 0, 233)";
   else if (symbol === "$") style.color = "blue";

@@ -6,6 +6,7 @@
 }
 .announce button {
   background-color: #fff;
+  outline: none;
   border: none;
   width: 6rem;
   height: 2rem;

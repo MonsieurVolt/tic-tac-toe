@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 130%;
 }
 body {
   background-color: #000;
+
   color: white;
   display: flex;
   justify-content: center;
@@ -13,6 +15,16 @@ body {
   font-family: "Baloo Tamma 2", cursive;
 }
 #root {
-  width: 15rem;
-  height: 15rem;
+  width: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+  min-width: 15rem;
+  min-height: 15rem;
+}
+@media screen and (max-width: 590px) {
+  * {
+    font-size: 90%;
+  }
 }

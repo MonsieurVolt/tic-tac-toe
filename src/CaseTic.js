@@ -1,7 +1,10 @@
 import React from "react";
 import "./CaseTic.css";
-function CaseTic({ symbol, onClick, index, playerSymbol }) {
-  const style = {};
+function CaseTic({ symbol, onClick, index, playerSymbol, background }) {
+  const style = {
+    backgroundColor: background,
+  };
+  console.log(background);
   let className = "caseTic ";
   if (symbol === "$") className += "dollard";
   else if (symbol === "€") className += "euro";

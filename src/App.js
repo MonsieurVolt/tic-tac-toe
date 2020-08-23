@@ -18,9 +18,14 @@ class App extends Component {
       },
       informationsSecondPlayer: false,
     };
+    this.format = this.state;
     this.setPlayerSymbol = this.setPlayerSymbol.bind(this);
     this.updateNbPlayer = this.updateNbPlayer.bind(this);
     this.agreement = this.agreement.bind(this);
+    this.restart = this.restart.bind(this);
+  }
+  restart() {
+    this.setState(this.format);
   }
   agreement() {
     this.setState({
@@ -57,7 +62,12 @@ class App extends Component {
     return (
       <Fragment>
         {informationsSecondPlayer ? (
-          <GameTic player1={player1} player2={player2} nbPlayer={nbPlayer} />
+          <GameTic
+            player1={player1}
+            player2={player2}
+            nbPlayer={nbPlayer}
+            restart={this.restart}
+          />
         ) : (
           <GameInterface
             nbPlayer={nbPlayer}
