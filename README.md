@@ -1,8 +1,16 @@
+## Play the game
+
+You can play in this [code pen](https://codepen.io/monsieurvolt/full/dyMNNVG)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### yarn
+
+Install all the require modules
 
 ### `yarn start`
 
